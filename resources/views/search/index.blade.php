@@ -7,7 +7,7 @@
             <h1>My Shopping API Test</h1>
 
             <div class="row">
-                <div class="col-6">
+                <div class="mb-4 col-6">
                     <form method="GET" action="{{ route('search') }}">
                         <input type="text" name="keyword" class="form-control" value="{{ $keyword }}"/>
                         

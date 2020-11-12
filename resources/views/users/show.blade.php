@@ -33,11 +33,12 @@
                             <img src="{{ $reallyWant->image }}" alt="商品の写真">
                         </div>
                         <div class="panel-body">
-                            <p>{{ $reallyWant->item_name }}</p>
-                            <p>{{ number_format($reallyWant->price) }}</p>
+                            <a href="{{ $reallyWant->item_url }}" target="_blank">{{ $reallyWant->item_name }}</a>
+                            <p class="text-center">{{ number_format($reallyWant->price) }}</p>
                         </div>
                     </div>
                 </div>
+               
             @endforeach  
         </div>  
      {{-- ページネーションのリンク --}}
@@ -55,8 +56,8 @@
                             <img src="{{ $want->image }}" alt="商品の写真">
                         </div>
                         <div class="panel-body">
-                            <p>{{ $want->item_name }}</p>
-                            <p>{{ number_format($want->price) }}</p>
+                            <a href="{{ $want->item_url }}" target="_blank">{{ $want->item_name }}</a>
+                            <p class="text-center">{{ number_format($want->price) }}</p>
                         </div>
                     </div>
                 </div>

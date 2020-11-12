@@ -48,7 +48,6 @@ class User extends Authenticatable
         return $this->belongsToMany(Item::class, 'wants', 'user_id', 'item_id')->withTimestamps();
     }
     
-    
     public function reallyWants()
     {
         return $this->wants()->where('want_kind','reallyWant');
@@ -58,7 +57,6 @@ class User extends Authenticatable
     {
         return $this->wants()->where('want_kind','want');
     }
-    
     
  
     public function want($itemId,$want_kind)

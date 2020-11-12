@@ -15,4 +15,10 @@ class Item extends Model
         return $this->belongsToMany(User::class, 'wants', 'item_id', 'user_id')->withTimestamps();
     }
 
+     public function reallyWantUser()
+    {
+        return $this->users()->where('want_kind','reallyWant');
+    }
+
+
 }

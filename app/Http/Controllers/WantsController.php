@@ -21,7 +21,8 @@ class WantsController extends Controller
           
          $item = Item::firstOrCreate([
                 'code' => $code ],
-            ['item_name' => $request->item_name,
+            ['item_url' => $request->item_url,
+            'item_name' => $request->item_name,
             'image'=> $request->image,
             'price'=> $request->price,
             ]);

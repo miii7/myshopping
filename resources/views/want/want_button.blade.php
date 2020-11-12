@@ -5,6 +5,7 @@
         
 @else        
         {!! Form::open(['route' => ['wants.store', $item['itemCode']]]) !!}
+          <input type="hidden" name="item_url" value="{{ $item['itemUrl'] }}">
           <input type="hidden" name="item_name" value="{{ $item['itemName'] }}">
           <input type="hidden" name="image" value="{{ $item['mediumImageUrls'] }}">
           <input type="hidden" name="price" value="{{ $item['itemPrice'] }}">
@@ -13,6 +14,7 @@
         {!! Form::close() !!}
         
         {!! Form::open(['route' => ['wants.store', $item['itemCode']]]) !!}
+          <input type="hidden" name="item_url" value="{{ $item['itemUrl'] }}">
           <input type="hidden" name="item_name" value="{{ $item['itemName'] }}">
           <input type="hidden" name="image" value="{{ $item['mediumImageUrls'] }}">
           <input type="hidden" name="price" value="{{ $item['itemPrice'] }}">
