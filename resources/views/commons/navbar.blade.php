@@ -1,11 +1,18 @@
 <header class="mb-4">
-    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-sm navbar-light bg-light">
+        
+        @if (Auth::check())
+        <a class="navbar-brand" href="/search">My Shopping</a>
+        
+        @else
         {{-- トップページへのリンク --}}
         <a class="navbar-brand" href="/">My Shopping</a>
 
         <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#nav-bar">
             <span class="navbar-toggler-icon"></span>
         </button>
+         @endif
+            
 
         <div class="collapse navbar-collapse" id="nav-bar">
             <ul class="navbar-nav mr-auto"></ul>
@@ -16,7 +23,7 @@
                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">{{ Auth::user()->name }}さん</a>
                         <ul class="dropdown-menu dropdown-menu-right">
                             {{-- ユーザ詳細ページへのリンク --}}
-                            <li class="dropdown-item">{!! link_to_route('users.show', '{{ Auth::user()->name }}さんのページ', ['user' => Auth::id()]) !!}</li>
+                            <li class="dropdown-item">{!! link_to_route('users.show', Auth::user()->name . 'さんのページ', ['user' => Auth::id()]) !!}</li>
                            
                             <li class="dropdown-divider"></li>
                             {{-- ログアウトへのリンク --}}

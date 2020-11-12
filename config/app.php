@@ -27,7 +27,7 @@ return [
     */
 
     'env' => env('APP_ENV', 'production'),
-
+    
     /*
     |--------------------------------------------------------------------------
     | Application Debug Mode
@@ -226,5 +226,8 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
     ],
+    
+    'rakuten_id' => env('RAKUTEN_APPLICATION_ID', false),
+    'rakuten_key' => env('RAKUTEN_APPLICATION_SECRET', false),
 
 ];

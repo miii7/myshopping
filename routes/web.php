@@ -23,5 +23,19 @@ Route::post('login', 'Auth\LoginController@login')->name('login.post');
 Route::get('logout', 'Auth\LoginController@logout')->name('logout.get');
 
 Route::group(['middleware' => ['auth']], function () {
-    Route::resource('users', 'UsersController', ['only' => ['show']]);
+    Route::group(['prefix' => 'users/{id}'], function () {
+        Route::get('show', 'UsersController@show')->name('users.show');    // 追加
+    });
+     Route::resource('users', 'UsersController', ['only' => ['index', 'show']]);
 });
+
+
+
+ // 追加
+    Route::group(['prefix' => 'items/{id}'], function () {
+        Route::post('want', 'WantsController@store')->name('wants.store');
+        Route::delete('notwant', 'WantsController@destroy')->name('wants.destroy');
+    });
+
+
+Route::get('search', 'SearchController@index')->name('search');
