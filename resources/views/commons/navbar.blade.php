@@ -17,14 +17,16 @@
         <div class="collapse navbar-collapse" id="nav-bar">
             <ul class="navbar-nav mr-auto"></ul>
             <ul class="navbar-nav">
+                
                 @if (Auth::check())
+                    <li class="m-2">{!! link_to_route('search.index', '商品を探す') !!}</li>
+                    <li class="m-2">{!! link_to_route('ranking.index', 'ランキング') !!}</li>
                     
                     <li class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">{{ Auth::user()->name }}さん</a>
                         <ul class="dropdown-menu dropdown-menu-right">
                             {{-- ユーザ詳細ページへのリンク --}}
                             <li class="dropdown-item">{!! link_to_route('users.show', Auth::user()->name . 'さんのページ', ['user' => Auth::id()]) !!}</li>
-                           
                             <li class="dropdown-divider"></li>
                             {{-- ログアウトへのリンク --}}
                             <li class="dropdown-item">{!! link_to_route('logout.get', 'ログアウト') !!}</li>

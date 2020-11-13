@@ -26,6 +26,7 @@ Route::get('ranking', 'RankingController@index')->name('ranking.index');
 
 
 Route::group(['middleware' => ['auth']], function () {
+    Route::get('search', 'SearchController@index')->name('search.index'); //追加
     Route::group(['prefix' => 'users/{id}'], function () {
         Route::get('show', 'UsersController@show')->name('users.show');    // 追加
     });
@@ -39,4 +40,3 @@ Route::group(['middleware' => ['auth']], function () {
     });
 
 
-Route::get('search', 'SearchController@index')->name('search');

@@ -8,7 +8,7 @@
 
             <div class="row">
                 <div class="mb-4 col-6">
-                    <form method="GET" action="{{ route('search') }}">
+                    <form method="GET" action="{{ route('search.index') }}">
                         <input type="text" name="keyword" class="form-control" value="{{ $keyword }}"/>
                         
                         <button type="submit" class="btn btn-info">Search</button>
