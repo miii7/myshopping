@@ -19,7 +19,7 @@ class WantsController extends Controller
         $item->save();
         */
           
-         $item = Item::firstOrCreate([
+        $item = Item::firstOrCreate([
                 'code' => $code ],
             ['item_url' => $request->item_url,
             'item_name' => $request->item_name,
@@ -30,11 +30,34 @@ class WantsController extends Controller
         \Auth::user()->want($item->id,$request->want_kind);
         
         
+       /* $item = Item::firstOrCreate([
+                'id' => $id ],
+            ['code' => $request->code,
+            'item_url' => $request->item_url,
+            'item_name' => $request->item_name,
+            'image'=> $request->image,
+            'price'=> $request->price,
+            ]);
+        
+         \Auth::user()->want($item->id,$request->want_kind);
+        */
+        
         // 前のURLへリダイレクトさせる
         return back();
     }
 
-    public function destroy($code)
+
+        public function destroy($itemid)
+    {
+        $item= Item::where('id', $itemid)->first();
+        
+        \Auth::user()->notwant($item->id);
+        // 前のURLへリダイレクトさせる
+        return back();
+    }
+
+
+   /* public function destroy($code)
     {
         $item= Item::where('code', $code)->first();
         
@@ -42,6 +65,6 @@ class WantsController extends Controller
         // 前のURLへリダイレクトさせる
         return back();
     }
-    
+    */
     
 }

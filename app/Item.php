@@ -7,18 +7,17 @@ use Illuminate\Database\Eloquent\Model;
 class Item extends Model
 {
     protected $fillable = [
-        'user_id', 'code', 'item_name','image','price',
+        'user_id', 'code', 'item_url','item_name','image','price',
     ];
 
-    public function users()
+    public function wantUsers()
     {
         return $this->belongsToMany(User::class, 'wants', 'item_id', 'user_id')->withTimestamps();
     }
 
-     public function reallyWantUser()
+     public function reallyWantUsers()
     {
-        return $this->users()->where('want_kind','reallyWant');
+        return $this->wantUsers()->where('want_kind','reallyWant');
     }
-
 
 }

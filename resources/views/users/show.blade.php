@@ -35,6 +35,9 @@
                         <div class="panel-body">
                             <a href="{{ $reallyWant->item_url }}" target="_blank">{{ $reallyWant->item_name }}</a>
                             <p class="text-center">{{ number_format($reallyWant->price) }}</p>
+                        
+                        {{-- Want／Not  ボタン --}}  
+                        @include('want.want_button')
                         </div>
                     </div>
                 </div>
@@ -58,6 +61,8 @@
                         <div class="panel-body">
                             <a href="{{ $want->item_url }}" target="_blank">{{ $want->item_name }}</a>
                             <p class="text-center">{{ number_format($want->price) }}</p>
+                            {{-- Want／Not  ボタン --}}
+                            
                         </div>
                     </div>
                 </div>

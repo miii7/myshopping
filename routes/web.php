@@ -28,12 +28,12 @@ Route::get('ranking', 'RankingController@index')->name('ranking.index');
 Route::group(['middleware' => ['auth']], function () {
     Route::get('search', 'SearchController@index')->name('search.index'); //追加
     Route::group(['prefix' => 'users/{id}'], function () {
-        Route::get('show', 'UsersController@show')->name('users.show');    // 追加
+       Route::get('show', 'UsersController@show')->name('users.show');    // 追加
     });
-     Route::resource('users', 'UsersController', ['only' => ['index', 'show']]);
+    Route::resource('users', 'UsersController', ['only' => ['index', 'show']]);
 });
-
- // 追加
+    
+    
     Route::group(['prefix' => 'items/{id}'], function () {
         Route::post('want', 'WantsController@store')->name('wants.store');
         Route::delete('notwant', 'WantsController@destroy')->name('wants.destroy');

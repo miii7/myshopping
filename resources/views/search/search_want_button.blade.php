@@ -1,11 +1,10 @@
-@if(Auth::user()->is_want_id($item['itemId']))
-        {!! Form::open(['route' => ['wants.destroy', $item['itemId'] ], 'method' => 'delete']) !!}
+@if(Auth::user()->is_want($item['itemCode']))
+        {!! Form::open(['route' => ['wants.destroy', $item['itemCode']], 'method' => 'delete']) !!}
         {!!  Form::submit('Not Want', ['class' => "btn btn-secondary btn-sm"]) !!}
         {!! Form::close() !!}
         
 @else        
-        {!! Form::open(['route' => ['wants.store', $item['itemId']]]) !!}
-          <input type="hidden" name="item_url" value="{{ $item['itemCode'] }}">
+        {!! Form::open(['route' => ['wants.store', $item['itemCode']]]) !!}
           <input type="hidden" name="item_url" value="{{ $item['itemUrl'] }}">
           <input type="hidden" name="item_name" value="{{ $item['itemName'] }}">
           <input type="hidden" name="image" value="{{ $item['mediumImageUrls'] }}">
@@ -14,8 +13,7 @@
         {!! Form::submit('Really Want', ['class' => "btn btn-primary btn-sm"]) !!}
         {!! Form::close() !!}
         
-        {!! Form::open(['route' => ['wants.store', $item['itemId']]]) !!}
-          <input type="hidden" name="item_url" value="{{ $item['itemCode'] }}">
+        {!! Form::open(['route' => ['wants.store', $item['itemCode']]]) !!}
           <input type="hidden" name="item_url" value="{{ $item['itemUrl'] }}">
           <input type="hidden" name="item_name" value="{{ $item['itemName'] }}">
           <input type="hidden" name="image" value="{{ $item['mediumImageUrls'] }}">
@@ -24,5 +22,4 @@
         {!! Form::submit('Want', ['class' => "btn btn-success btn-sm"]) !!}
         {!! Form::close() !!}
 @endif        
-  
   

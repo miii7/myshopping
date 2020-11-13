@@ -42,8 +42,7 @@
                                                 <p>{{ $item['itemCode'] }}</p>
                                                
                                                 {{-- Want／Not  Wantボタン --}}  
-                                                @include('want.want_button')
-                                                
+                                               　@include('search.search_want_button')
                                             </td>
                                         <td>
                                           {{ (number_format ($item['itemPrice'] )) }}
