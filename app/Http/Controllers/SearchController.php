@@ -10,6 +10,7 @@ class SearchController extends Controller
 {
      public function index(Request $request)
     {
+       
         $client = new RakutenRws_Client();
         define("RAKUTEN_APPLICATION_ID"     , config('app.rakuten_id'));
         define("RAKUTEN_APPLICATION_SECRET", config('app.rakuten_key'));
@@ -18,7 +19,7 @@ class SearchController extends Controller
 
         $keyword = $request->input('keyword');
        
-       $items = array();
+        $items = array();
         if(!empty($keyword)){ 
             $response = $client->execute('IchibaItemSearch', array(
                 'keyword' => $keyword,
@@ -39,7 +40,7 @@ class SearchController extends Controller
                         );
                 }
             }
-            
+
         }
         
         $data = ['keyword' => $keyword,

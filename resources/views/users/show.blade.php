@@ -3,13 +3,12 @@
 @section('content')
     <div class="user-profile">
         <div class="name text-center">
-            <h1>{{ $user->name }}さん</h1>
+        <div class="name"><h1>{{ $user->name }}さんのWant</h1></div>
         </div>
         <div class="icon text-center">
              <img class="img-circle" src="{{ Gravatar::get($user->email, ['size' => 100]) }}" alt="">
         </div>
         
-          
         <div class="d-flex justify-content-center">    
                     <div class="p-2 status-label">Really Want:</div>
                     <div id="reallyWants_count" class="status-value">
@@ -24,20 +23,19 @@
     </div>
 
  @if (count($reallyWants) > 0)    
-    <h3>●Really Want一覧</h3> 
+    <div class="ichiran"><h3>Really Want一覧</h3></div> 
         <div class="mt-4 row">
             @foreach ($reallyWants as $reallyWant)
-                <div class="col-md-3 col-sm-4 col-xs-12">
+                <div class="mb-5 col-md-3 col-sm-4 col-xs-12">
                     <div class="panel panel-default">
                         <div class="panel-heading text-center">
                             <img src="{{ $reallyWant->image }}" alt="商品の写真">
                         </div>
                         <div class="panel-body">
                             <a href="{{ $reallyWant->item_url }}" target="_blank">{{ $reallyWant->item_name }}</a>
-                            <p class="text-center">{{ number_format($reallyWant->price) }}</p>
-                        
+                            <p class="text-center">¥{{ number_format($reallyWant->price) }}</p>
                         {{-- Want／Not  ボタン --}}  
-                        @include('want.want_button')
+                        <div class="text-center">@include('want.want_button',['item' => $reallyWant])</div>
                         </div>
                     </div>
                 </div>
@@ -50,7 +48,7 @@
 @endif   
    
 @if (count($wants) > 0)  
-    <h3>●Want一覧</h3>
+    <div class="ichiran"><h3>Want一覧</h3></div>
          <div class="mt-4 row">
             @foreach ($wants as $want)
                 <div class="col-md-3 col-sm-4 col-xs-12">
@@ -62,7 +60,7 @@
                             <a href="{{ $want->item_url }}" target="_blank">{{ $want->item_name }}</a>
                             <p class="text-center">{{ number_format($want->price) }}</p>
                             {{-- Want／Not  ボタン --}}
-                            
+                            <div class="text-center">@include('want.want_button',['item' => $want])</div>
                         </div>
                     </div>
                 </div>

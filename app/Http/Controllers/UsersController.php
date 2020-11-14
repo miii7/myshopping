@@ -20,13 +20,11 @@ class UsersController extends Controller
         $wants = $user->nomalWants()->orderBy('created_at', 'desc')->paginate(10);
         $reallyWants = $user->reallyWants()->orderBy('created_at', 'desc')->paginate(10);
 
-        //$item = $user->wants()->first();
        
         return view('users.show', [
             'user' => $user,
             'wants' => $wants,
             'reallyWants'=>$reallyWants,
-            //'item'=>$item,
         ]);
     }
     

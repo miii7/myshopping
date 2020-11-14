@@ -1,22 +1,9 @@
 @extends('layouts.app')
 
-/*@section('cover')
-    <div class="cover">
-        <div class="cover-inner">
-            <div class="cover-contents">
-                <h1>My Shopping</h1>
-                @if (!Auth::check())
-                    <a href="{{ route('signup.get') }}" class="btn btn-success btn-lg">Start</a>
-                @endif
-            </div>
-        </div>
-    </div>
-@endsection
-*/
 
 @section('content')
     @if (Auth::check())
-        {{ Auth::user()->name }}
+        <p>{{ Auth::user()->name }} . "さん"</p>
     @else
         <div class="center jumbotron">
             <div class="text-center">
@@ -27,4 +14,5 @@
             </div>
         </div>
     @endif
+    <img src="{{ secure_asset("../../public/images/cover.png") }}" alt="My Shopping"> //追加
 @endsection

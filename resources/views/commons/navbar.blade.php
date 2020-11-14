@@ -2,10 +2,12 @@
     <nav class="navbar navbar-expand-sm navbar-light bg-light">
         
         @if (Auth::check())
+        <i class="fas fa-shopping-bag fa-2x fa-fw my-skyblue"></i>
         <a class="navbar-brand" href="/search">My Shopping</a>
         
         @else
         {{-- トップページへのリンク --}}
+        <i class="fas fa-shopping-bag fa-2x fa-fw my-skyblue"></i>
         <a class="navbar-brand" href="/">My Shopping</a>
 
         <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#nav-bar">

@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'SearchController@index')->name('search.index');
 
 Route::get('signup', 'Auth\RegisterController@showRegistrationForm')->name('signup.get');
 Route::post('signup', 'Auth\RegisterController@register')->name('signup.post');
@@ -26,7 +24,7 @@ Route::get('ranking', 'RankingController@index')->name('ranking.index');
 
 
 Route::group(['middleware' => ['auth']], function () {
-    Route::get('search', 'SearchController@index')->name('search.index'); //追加
+    Route::get('search', 'SearchController@index')->name('search.index'); 
     Route::group(['prefix' => 'users/{id}'], function () {
        Route::get('show', 'UsersController@show')->name('users.show');    // 追加
     });
@@ -36,7 +34,8 @@ Route::group(['middleware' => ['auth']], function () {
     
     Route::group(['prefix' => 'items/{id}'], function () {
         Route::post('want', 'WantsController@store')->name('wants.store');
-        Route::delete('notwant', 'WantsController@destroy')->name('wants.destroy');
+        Route::delete('notwantById', 'WantsController@destroyById')->name('wants.destroyById');
+        Route::delete('notwantByCode', 'WantsController@destroyByCode')->name('wants.destroyByCode');
     });
 
 

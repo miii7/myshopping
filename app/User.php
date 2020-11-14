@@ -49,7 +49,6 @@ class User extends Authenticatable
     }
     
     
-    
     public function reallyWants()
     {
         return $this->wants()->where('want_kind','reallyWant');

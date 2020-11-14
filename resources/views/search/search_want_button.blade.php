@@ -1,5 +1,5 @@
 @if(Auth::user()->is_want($item['itemCode']))
-        {!! Form::open(['route' => ['wants.destroy', $item['itemCode']], 'method' => 'delete']) !!}
+        {!! Form::open(['route' => ['wants.destroyByCode', $item['itemCode']], 'method' => 'delete']) !!}
         {!!  Form::submit('Not Want', ['class' => "btn btn-secondary btn-sm"]) !!}
         {!! Form::close() !!}
         
