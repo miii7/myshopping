@@ -4,14 +4,18 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Illuminate\Pagination\LengthAwarePaginator;
+
 use RakutenRws_Client;
 
 class SearchController extends Controller
 {
+ 
      public function index(Request $request)
     {
-       
+      
         $client = new RakutenRws_Client();
+        
         define("RAKUTEN_APPLICATION_ID"     , config('app.rakuten_id'));
         define("RAKUTEN_APPLICATION_SECRET", config('app.rakuten_key'));
         
@@ -20,11 +24,17 @@ class SearchController extends Controller
         $keyword = $request->input('keyword');
        
         $items = array();
+        
+        $noResultMessage="";
+        
+    
+        
         if(!empty($keyword)){ 
             $response = $client->execute('IchibaItemSearch', array(
                 'keyword' => $keyword,
-                'hits' => 5,
+                'hits' => 30,
                 'imageFlag' => 1,
+                'page' => $request->page,
             ));
             
             if ($response->isOk()) {
@@ -38,15 +48,43 @@ class SearchController extends Controller
                         'itemPrice' => $item['itemPrice'],
                         'mediumImageUrls' => $item['mediumImageUrls'][0]['imageUrl'],  
                         );
+                   
+                        
                 }
+            }else{
+                $noResultMessage="検索結果はありません。";
             }
-
         }
         
+        $items = new LengthAwarePaginator(
+            $items,
+            3000,
+            30,
+            $request->page,
+          );  
+        
+        
+       /* $items = new LengthAwarePaginator(
+            $items,
+            $response->pageCount >= 100 ? 100 : $response->pageCount * HITS,
+            HITS,
+            $request->page,
+          );
+        */
+        
+        $params = array( 
+            'keyword' => $keyword,
+            'page'  => $request->page
+             );
+        
         $data = ['keyword' => $keyword,
-            'items' => $items,];
+            'items' => $items,
+            'noResultMessage' => $noResultMessage,
+            'params' => $params,
+            ];
         
         return view('search.index', $data);
+        
         
     }
 }

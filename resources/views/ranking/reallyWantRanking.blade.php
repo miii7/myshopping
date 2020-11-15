@@ -2,17 +2,17 @@
 
 @section('content')
  <div class="text-center">
-    <p><i class="far fa-check-square fa-fw"></i>Let's check it</p>
+    <p><i class="far fa-check-square fa-fw"></i>Check it now</p>
     <div class="ranking">
-    <h1><i class="fas fa-crown fa-fw"></i>Really Want Ranking</h1>
+    <h1> Really Want Ranking <i class="fas fa-crown fa-fw"></i>Top10</h1>
     </div>
 </div>    
 @if (count($items)>0)   
         <div class="mt-4 row">
             @foreach ($items as $key =>$item)
                 <div class="col-md-3 col-sm-4 col-xs-12">
-                    <div class="key"><h3>{{ $key+1 }}位</h3></div>
-                    <p>※{{ $item->really_want_users_count }} 人がReally Wantしています！</p>
+                    <div class="key"><h2>{{ $key+1 }}位</h2></div>
+                    <p>{{ $item->really_want_users_count }} 人がReally Want中です！</p>
                     
                     <div class="panel panel-default">
                         <div class="panel-heading text-center">

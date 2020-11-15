@@ -42,6 +42,9 @@ body{
     height: 150px;
     }
 
+.btn-info{
+    background-color:skyblue;
+}
 
 .my-skyblue {
     color:#ff1493;
@@ -50,23 +53,30 @@ body{
 .ranking{
     color:gray;
     background-color: #fffda5;
+    padding:5px;
 }    
 
 .key{
     display:inline-block;
     color:white;
-    background-color: #fe4647;
+    background-color: #ff9f8a;
+    border-radius: 30%;
+    padding: 5px;
 } 
 
 
-.name{
+.your{
     color:gray;
     background-color: #fff4d6;
+    padding:3px;
 }
 
 .ichiran{
     display:inline-block;
     color:white;
     background-color: #ffb000;
+    border-radius: 50%;
+    padding: 15px;
 }
+
 

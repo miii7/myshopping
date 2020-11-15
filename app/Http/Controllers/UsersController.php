@@ -17,8 +17,8 @@ class UsersController extends Controller
         $user->loadRelationshipCounts();
         
         // ユーザのほしい一覧を取得
-        $wants = $user->nomalWants()->orderBy('created_at', 'desc')->paginate(10);
-        $reallyWants = $user->reallyWants()->orderBy('created_at', 'desc')->paginate(10);
+        $wants = $user->nomalWants()->orderBy('created_at', 'desc')->paginate(12);
+        $reallyWants = $user->reallyWants()->orderBy('created_at', 'desc')->paginate(12);
 
        
         return view('users.show', [

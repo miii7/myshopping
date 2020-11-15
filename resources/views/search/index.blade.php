@@ -5,6 +5,7 @@
 @if (Auth::check())
     <div class="d-flex flex-row">
          <div class="mt-4 mb-4 col-6">
+             <p>キーワードを入力してください。</p>
             <form method="GET" action="{{ route('search.index') }}">
                 <input type="text" name="keyword" class="form-control" value="{{ $keyword }}"/>
                 <button type="submit" class="mt-4 btn btn-info">Search</button>
@@ -30,7 +31,8 @@
                         <div class="panel-body">
                             <a href="{{ $item['itemUrl'] }}" target="_blank">{{ $item['itemName'] }}</a>
                             <p class="text-center">¥{{ number_format($item['itemPrice']) }}</p>
-                        {{-- Want／Not  ボタン --}}  
+                        
+                        {{-- 検索ページ用Want／Not  ボタン --}}  
                         <div class="text-center">@include('search.search_want_button')</div>
                         </div>
                     </div>
@@ -39,12 +41,18 @@
             </div>  
             </div>
         </div>
-    @else
-      <p>検索結果はありません。</p>
+        {{-- ページネーションのリンク --}}
+        <div class="pagination justify-content-center">
+            {{ $items->appends($params)->links() }}  
+        </div>
+           @else
+      {{-- <p>{{ $noKeywordMessage }}</p> --}}
+  
+   
     @endif
-
-
 @else
+
+
 
 @section('cover')
     <div class="cover">

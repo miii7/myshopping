@@ -3,7 +3,7 @@
 @section('content')
     <div class="user-profile">
         <div class="name text-center">
-        <div class="name"><h1>{{ $user->name }}さんのWant</h1></div>
+        <div class="your"><h1><i class="fas fa-heart fa-fw"></i>Your Really Want & Want</h1></div>
         </div>
         <div class="icon text-center">
              <img class="img-circle" src="{{ Gravatar::get($user->email, ['size' => 100]) }}" alt="">
@@ -12,12 +12,12 @@
         <div class="d-flex justify-content-center">    
                     <div class="p-2 status-label">Really Want:</div>
                     <div id="reallyWants_count" class="status-value">
-                       <h3> {{ $user->really_wants_count }} </h3>
+                       <h2> {{ $user->really_wants_count }} </h2>
                     </div>
                
                     <div class="p-2 status-label">Want:</div>
                      <div id="wants_count" class="status-value">
-                       <h3> {{ $user->nomal_wants_count }} </h3>
+                       <h2> {{ $user->nomal_wants_count }} </h2>
                    </div>
         </div>
     </div>
@@ -43,9 +43,13 @@
             @endforeach  
         </div>  
      {{-- ページネーションのリンク --}}
-      {{ $reallyWants->links() }}
+      <div class="pagination justify-content-center">
+          {{ $reallyWants->links() }}
+        </div>
    
 @endif   
+   
+   <hr />
    
 @if (count($wants) > 0)  
     <div class="ichiran"><h3>Want一覧</h3></div>
@@ -68,7 +72,9 @@
          </div>  
       
       {{-- ページネーションのリンク --}}
-      {{ $wants->links() }}
+      <div class="pagination justify-content-center">
+          {{ $wants->links() }}
+          </div>
 @endif        
    
 @endsection  
