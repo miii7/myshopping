@@ -27,11 +27,11 @@
         <div class="mt-4 row">
             @foreach ($reallyWants as $reallyWant)
                 <div class="mb-5 col-md-3 col-sm-4 col-xs-12">
-                    <div class="panel panel-default">
-                        <div class="panel-heading text-center">
+                    <div class="card">
+                        <div class="card-header text-center">
                             <img src="{{ $reallyWant->image }}" alt="商品の写真">
                         </div>
-                        <div class="panel-body">
+                        <div class="card-body">
                             <a href="{{ $reallyWant->item_url }}" target="_blank">{{ $reallyWant->item_name }}</a>
                             <p class="text-center">¥{{ number_format($reallyWant->price) }}</p>
                         {{-- Want／Not  ボタン --}}  
@@ -56,11 +56,11 @@
          <div class="mt-4 row">
             @foreach ($wants as $want)
                 <div class="col-md-3 col-sm-4 col-xs-12">
-                    <div class="panel panel-default">
-                        <div class="panel-heading text-center">
+                    <div class="card">
+                        <div class="card-header text-center">
                             <img src="{{ $want->image }}" alt="商品の写真">
                         </div>
-                        <div class="panel-body">
+                        <div class="card-body">
                             <a href="{{ $want->item_url }}" target="_blank">{{ $want->item_name }}</a>
                             <p class="text-center">{{ number_format($want->price) }}</p>
                             {{-- Want／Not  ボタン --}}

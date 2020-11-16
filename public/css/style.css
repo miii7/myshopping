@@ -3,6 +3,11 @@ body{
     color:#363c3c;
 }
 
+footer {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
 .cover{
     margin-top: -30px;
     margin-bottom: 20px;

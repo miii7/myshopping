@@ -20,15 +20,15 @@
         <div class="row">
             <div class="col-12">
                 <h2>{{ $keyword }}の検索結果一覧</h2>
-                        
-            <div class="mt-4 row">
+         
+           <<div class="mt-4 row">     
             @foreach ($items as $item)
                 <div class="mb-5 col-md-3 col-sm-4 col-xs-12">
-                    <div class="panel panel-default">
-                        <div class="panel-heading text-center">
+                    <div class="card">
+                        <div class="card-header text-center">
                             <img src="{{ $item['mediumImageUrls'] }}" alt="商品の写真">
                         </div>
-                        <div class="panel-body">
+                        <div class="card-body">
                             <a href="{{ $item['itemUrl'] }}" target="_blank">{{ $item['itemName'] }}</a>
                             <p class="text-center">¥{{ number_format($item['itemPrice']) }}</p>
                         
@@ -38,7 +38,9 @@
                     </div>
                 </div>
             @endforeach  
-            </div>  
+            </div>    
+                
+            
             </div>
         </div>
         {{-- ページネーションのリンク --}}

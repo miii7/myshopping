@@ -32,7 +32,7 @@ class SearchController extends Controller
         if(!empty($keyword)){ 
             $response = $client->execute('IchibaItemSearch', array(
                 'keyword' => $keyword,
-                'hits' => 30,
+                'hits' => 28,
                 'imageFlag' => 1,
                 'page' => $request->page,
             ));
@@ -57,20 +57,10 @@ class SearchController extends Controller
         }
         
         $items = new LengthAwarePaginator(
-            $items,
-            3000,
-            30,
-            $request->page,
+            $items,3000,28,$request->page,
           );  
         
         
-       /* $items = new LengthAwarePaginator(
-            $items,
-            $response->pageCount >= 100 ? 100 : $response->pageCount * HITS,
-            HITS,
-            $request->page,
-          );
-        */
         
         $params = array( 
             'keyword' => $keyword,
