@@ -8,9 +8,11 @@ footer {
     margin-bottom: 50px;
 }
 
+
+/*表紙*/
 .cover{
-    margin-top: -30px;
-    margin-bottom: 20px;
+    margin-top: -40px;
+    margin-bottom: -30px;
     width: 100%;
     height: 700px;
     background: url("/images/cover.jpg") center center no-repeat;
@@ -20,15 +22,14 @@ footer {
 .cover .cover-inner {
     height: 100%;
     margin-left:0px;
-    display: table;
+    display: inline-block;
 }
 
 .cover .cover-inner .cover-contents {
-    margin-top:30px;
+    margin-top: 50px;
     margin-left: 20px;
-    vertical-align: middle;
+    vertical-align: bottom;
     text-align: center;
-    position: relative;
 }
 .cover .cover-inner .cover-contents h1 {
     margin: 0 0 30px 0;
@@ -37,15 +38,22 @@ footer {
     letter-spacing: 0.15em;
     text-shadow: 4px 4px 1px #808080;
 }
+
 .cover .btn-info {
     background-color: skyblue;
 }
 
 
+/*検索ページ*/
+.computer img{
+    width: 100%;
+    height: 300px;
+    }
+    
 .bag img{
     width: 150px;
     height: 150px;
-    }
+    }    
 
 .btn-info{
     background-color:skyblue;
@@ -54,7 +62,33 @@ footer {
 .my-skyblue {
     color:#ff1493;
     }
-    
+
+.item-title {
+    /* 文の行数を2行に保ち、最後に ... を追加する */
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+}
+
+.card-header {
+    height: 250px;
+}
+.card-header img {
+    height: 100%;
+    max-width: 100%;
+}
+
+
+/*ボタン共通*/
+.btn-group{
+    margin-right: 15px;
+    margin-left:15px;
+}
+
+
+
+/*ランキングページ*/    
 .ranking{
     color:gray;
     background-color: #fffda5;
@@ -70,6 +104,8 @@ footer {
 } 
 
 
+
+/*ユーザ詳細ページ*/
 .your{
     color:gray;
     background-color: #fff4d6;

@@ -80,7 +80,6 @@ class User extends Authenticatable
         // すでにほしい登録しているかの確認
         $exist = $this->is_want_id($itemId);
         
-
         if ($exist) {
             // すでにほしい登録していればほしいを外す
             $this->wants()->detach($itemId);
@@ -94,8 +93,6 @@ class User extends Authenticatable
     public function is_want($itemCode)
     {
         return $this->wants()->where('code', $itemCode)->exists();
-        
-        //return Item::where('code', $itemCode)->exists();
     }
 
      public function is_want_id($itemId)

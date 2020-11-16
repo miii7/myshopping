@@ -10,23 +10,19 @@ class UsersController extends Controller
 {
     public function show($id)
     {
-        // idの値でユーザを検索して取得
+       
         $user = User::findOrFail($id);
         
-        // 関係するモデルの件数をロード
         $user->loadRelationshipCounts();
         
         // ユーザのほしい一覧を取得
         $wants = $user->nomalWants()->orderBy('created_at', 'desc')->paginate(12);
         $reallyWants = $user->reallyWants()->orderBy('created_at', 'desc')->paginate(12);
 
-       
         return view('users.show', [
             'user' => $user,
             'wants' => $wants,
             'reallyWants'=>$reallyWants,
         ]);
     }
-    
-
 }

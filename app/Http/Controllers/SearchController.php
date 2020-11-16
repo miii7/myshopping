@@ -16,18 +16,13 @@ class SearchController extends Controller
       
         $client = new RakutenRws_Client();
         
-        define("RAKUTEN_APPLICATION_ID"     , config('app.rakuten_id'));
-        define("RAKUTEN_APPLICATION_SECRET", config('app.rakuten_key'));
-        
-        $client->setApplicationId(1064777723809602160);
+        $client->setApplicationId(config('app.rakuten_id'));
 
         $keyword = $request->input('keyword');
        
         $items = array();
         
         $noResultMessage="";
-        
-    
         
         if(!empty($keyword)){ 
             $response = $client->execute('IchibaItemSearch', array(
@@ -38,34 +33,33 @@ class SearchController extends Controller
             ));
             
             if ($response->isOk()) {
-                
                 foreach ($response as $item){
-            
-                    $items[] = array(
+                     $items[] = array(
                         'itemUrl' => $item['itemUrl'],
                         'itemName' => $item['itemName'],
                         'itemCode' => $item['itemCode'],
                         'itemPrice' => $item['itemPrice'],
                         'mediumImageUrls' => $item['mediumImageUrls'][0]['imageUrl'],  
                         );
-                   
-                        
                 }
+                
+                $items = new LengthAwarePaginator(
+                    $items,
+                    $response['count'] >= 28*100 ? 28*100 : $response['count'] ,
+                    28,
+                    $request->page,
+                    ['path' => '/search']
+                );
+               
             }else{
                 $noResultMessage="検索結果はありません。";
             }
         }
-        
-        $items = new LengthAwarePaginator(
-            $items,3000,28,$request->page,
-          );  
-        
-        
-        
-        $params = array( 
+      
+        $params = [ 
             'keyword' => $keyword,
             'page'  => $request->page
-             );
+             ];
         
         $data = ['keyword' => $keyword,
             'items' => $items,
@@ -74,7 +68,5 @@ class SearchController extends Controller
             ];
         
         return view('search.index', $data);
-        
-        
     }
 }
