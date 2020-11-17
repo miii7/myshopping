@@ -22,9 +22,6 @@ class SearchController extends Controller
        
         $items = array();
         
-        $noKeywordMessage="キーワードを入力してください。";
-        $noResultMessage="検索結果はありませんでした。";
-        
         if(!empty($keyword)){ 
             $response = $client->execute('IchibaItemSearch', array(
                 'keyword' => $keyword,
@@ -61,8 +58,6 @@ class SearchController extends Controller
         
         $data = ['keyword' => $keyword,
             'items' => $items,
-            'noKeywordMessage' => $noKeywordMessage,
-            'noResultMessage' => $noResultMessage,
             'params' => $params,
             ];
        

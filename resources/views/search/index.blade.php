@@ -48,9 +48,9 @@
         
     @else
         @if($keyword === null)
-          <p>{{ $noKeywordMessage }}</p> 
-        @else  
-        <p>{{ $keyword }} の{{ $noResultMessage }}</p> 
+        <p>キーワードを入力してください。</p>
+        @else 
+        <p>{{ $keyword }}　の検索結果はありませんでした。</p>
         @endif
     @endif
 
