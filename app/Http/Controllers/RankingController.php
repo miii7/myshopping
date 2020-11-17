@@ -10,7 +10,16 @@ class RankingController extends Controller
 {
     public function index()
     {
-     $items = Item::withCount('reallyWantUsers')->having('really_want_users_count', '>', 0)->orderBy('really_want_users_count', 'desc')->take(10)->get();
+        
+        $query = Item::withCount('reallyWantUsers');
+
+        $items = Item::fromSub($query, 'alias')
+            ->where('really_want_users_count', '>', 0)
+            ->orderBy('really_want_users_count', 'desc')
+            ->take(10)
+            ->get();
+        
+    //  $items = Item::withCount('reallyWantUsers')->having('really_want_users_count', '>', 0)->orderBy('really_want_users_count', 'desc')->take(10)->get();
      
          return view('ranking.reallyWantRanking', [
             'items' => $items,
