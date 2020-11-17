@@ -22,7 +22,8 @@ class SearchController extends Controller
        
         $items = array();
         
-        $noResultMessage="";
+        $noKeywordMessage="キーワードを入力してください。";
+        $noResultMessage="検索結果はありませんでした。";
         
         if(!empty($keyword)){ 
             $response = $client->execute('IchibaItemSearch', array(
@@ -31,7 +32,7 @@ class SearchController extends Controller
                 'imageFlag' => 1,
                 'page' => $request->page,
             ));
-            
+           
             if ($response->isOk()) {
                 foreach ($response as $item){
                      $items[] = array(
@@ -39,7 +40,7 @@ class SearchController extends Controller
                         'itemName' => $item['itemName'],
                         'itemCode' => $item['itemCode'],
                         'itemPrice' => $item['itemPrice'],
-                        'mediumImageUrls' => $item['mediumImageUrls'][0]['imageUrl'],  
+                       'mediumImageUrls' => str_replace('?_ex=128x128', '', $item['mediumImageUrls'][0]['imageUrl']),
                         );
                 }
                 
@@ -50,9 +51,6 @@ class SearchController extends Controller
                     $request->page,
                     ['path' => '/search']
                 );
-               
-            }else{
-                $noResultMessage="検索結果はありません。";
             }
         }
       
@@ -63,10 +61,11 @@ class SearchController extends Controller
         
         $data = ['keyword' => $keyword,
             'items' => $items,
+            'noKeywordMessage' => $noKeywordMessage,
             'noResultMessage' => $noResultMessage,
             'params' => $params,
             ];
-        
+       
         return view('search.index', $data);
     }
 }

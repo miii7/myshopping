@@ -3,7 +3,6 @@
 @section('content')
     <div class="d-flex flex-row">
         <div class="mt-4 mb-4 col-6">
-            <p>キーワードを入力してください。</p>
             <form method="GET" action="{{ route('search.index') }}">
                 <input type="text" name="keyword" class="form-control" value="{{ $keyword }}"/>
                 <button type="submit" class="mt-4 btn btn-info">Search</button>
@@ -21,7 +20,7 @@
                 <h2>{{ $keyword }}の検索結果一覧</h2>
             </div>
         </div>
-        
+
         <div class="mt-4 row">     
             @foreach ($items as $item)
                 <div class="mb-5 col-md-3 col-sm-4 col-xs-12">
@@ -46,8 +45,13 @@
         <div class="pagination justify-content-center">
             {{ $items->appends($params)->links() }}  
         </div>
+        
     @else
-      {{-- <p>{{ $noKeywordMessage }}</p> --}}
+        @if($keyword === null)
+          <p>{{ $noKeywordMessage }}</p> 
+        @else  
+        <p>{{ $keyword }} の{{ $noResultMessage }}</p> 
+        @endif
     @endif
 
 @endsection

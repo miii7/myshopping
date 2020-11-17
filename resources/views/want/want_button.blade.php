@@ -4,7 +4,9 @@
         {!!  Form::submit('Not Want', ['class' => "btn btn-secondary btn-sm"]) !!}
         {!! Form::close() !!}
         
-@else        
+@else 
+    <div class="row justify-content-around">
+      <div class="col-4">
         {!! Form::open(['route' => ['wants.store', $item->code]]) !!}
           <input type="hidden" name="item_code" value="{{ $item->code }}">
           <input type="hidden" name="item_url" value="{{ $item->item_url }}">
@@ -12,12 +14,11 @@
           <input type="hidden" name="image" value="{{ $item->image }}">
           <input type="hidden" name="price" value="{{ $item->price }}">
           <input type="hidden" name="want_kind" value="reallyWant">
-          <div class="btn-toolbar">
-            <div class="btn-group">  
-              {!! Form::submit('Really Want', ['class' => "btn btn-primary btn-sm"]) !!}
-            </div>
+        {!! Form::submit('Really Want', ['class' => "btn btn-primary btn-sm"]) !!}
         {!! Form::close() !!}
-        
+      </div>  
+      
+      <div class="col-4">  
         {!! Form::open(['route' => ['wants.store', $item->code]]) !!}
           <input type="hidden" name="item_code" value="{{ $item->code }}">
           <input type="hidden" name="item_url" value="{{ $item->item_url }}">
@@ -25,11 +26,10 @@
           <input type="hidden" name="image" value="{{ $item->image }}">
           <input type="hidden" name="price" value="{{ $item->price }}">
           <input type="hidden" name="want_kind" value="want">
-            <div class="btn-group">   
-              {!! Form::submit('Want', ['class' => "btn btn-success btn-sm"]) !!}
-            </div>
-          </div>
+        {!! Form::submit('Want', ['class' => "btn btn-success btn-sm"]) !!}
         {!! Form::close() !!}
+      </div>
+    </div>
 @endif        
   
   
