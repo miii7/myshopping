@@ -1,7 +1,7 @@
-{{$item->id}}
+//{{$item->id}}
 @if(Auth::user()->is_want_id($item->id))
         {!! Form::open(['route' => ['wants.destroyById', $item->id], 'method' => 'delete']) !!}
-        {!!  Form::submit('Not Want', ['class' => "btn btn-secondary btn-sm"]) !!}
+        {!! Form::submit('Not Want', ['class' => "btn btn-secondary btn-sm"]) !!}
         {!! Form::close() !!}
         
 @else 

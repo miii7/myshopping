@@ -18,8 +18,6 @@ class RankingController extends Controller
             ->orderBy('really_want_users_count', 'desc')
             ->take(10)
             ->get();
-        
-    //  $items = Item::withCount('reallyWantUsers')->having('really_want_users_count', '>', 0)->orderBy('really_want_users_count', 'desc')->take(10)->get();
      
          return view('ranking.reallyWantRanking', [
             'items' => $items,
