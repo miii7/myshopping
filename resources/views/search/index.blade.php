@@ -48,9 +48,9 @@
         
     @else
         @if($keyword === null)
-        <p>キーワードを入力してください。</p>
+            <p>キーワードを入力してください。</p>
         @else 
-        <p>{{ $keyword }}　の検索結果はありませんでした。</p>
+            <p>{{ $keyword }}　の検索結果はありませんでした。</p>
         @endif
     @endif
 

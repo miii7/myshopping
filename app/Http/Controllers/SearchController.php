@@ -15,7 +15,6 @@ class SearchController extends Controller
     {
       
         $client = new RakutenRws_Client();
-        
         $client->setApplicationId(config('app.rakuten_id'));
 
         $keyword = $request->input('keyword');
