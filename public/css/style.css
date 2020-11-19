@@ -79,6 +79,8 @@ a:hover{
 /*各ぺージ*/
 /*検索ページ*/
 .bag img{
+    margin-top: 60px;
+    margin-left: 30px;
     width: 150px;
     height: 150px;
     }    
@@ -90,6 +92,11 @@ a:hover{
 .my-skyblue {
     color:#ff1493;
     }
+
+.keyword{
+    font-weight: bold;
+}
+
 
 
 /*ランキングページ*/    

@@ -17,6 +17,7 @@ class Item extends Model
 
      public function reallyWantUsers()
     {
+        // Really Wantしている人を指定
         return $this->wantUsers()->where('want_kind','reallyWant');
     }
 

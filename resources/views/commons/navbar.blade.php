@@ -26,9 +26,7 @@
                         <li class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">{{ Auth::user()->name }}さん</a>
                             <ul class="dropdown-menu dropdown-menu-right">
-                             {{--   <li class="dropdown-item">{!! link_to_route('users.show', Auth::user()->name . 'さんのページ', ['id'=> Auth::id()]) !!}</li>
-                               <li class="dropdown-divider"></li> --}}
-                                <li class="dropdown-item">{!! link_to_route('logout.get', 'ログアウト') !!}</li>
+                              <li class="dropdown-item">{!! link_to_route('logout.get', 'ログアウト') !!}</li>
                             </ul>
                         </li>
                     @else

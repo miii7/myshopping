@@ -1,50 +1,62 @@
 @extends('layouts.app')
 
 @section('content')
-   <div class="d-flex flex-row">
-        <div class="mt-4 mb-4 col-6"> 
+<div class="d-flex flex-row">
+    <div class="mt-4 mb-4 col-6"> 
+        {!! Form::open(['route' => 'search.index', 'method' => 'get']) !!}
+        <div class="form-group">
+            {!! Form::label('text', 'キーワード') !!}
+            {!! Form::text('keyword' ,'', ['class' => 'form-control', 'value'=>'{{ $keyword }}','placeholder' => '※必須'] ) !!}
+        </div>
             
-            <form method="GET" action="{{ route('search.index') }}">
-                <input type="text" name="keyword" required class="form-control" value="{{ $keyword }}"
-                placeholder="キーワード"/>
-       
-           
-        
-        <div class="d-flex flex-row mt-4">     
-       
-            <form method="GET" action="{{ route('search.index') }}">
-                <input type="text" name="minPrice" class="form-control" value="{{ $minPrice }}"　
-                placeholder="min"/>  
-       
-        
-       
-            <p>〜</p>  
-              
-              <form method="GET" action="{{ route('search.index') }}">
-                <input type="text" name="maxPrice" class="form-control" value="{{ $maxPrice }}"
-                placeholder="max"/>  
-        
-          <p>円</p>
-         </div>       
-                <button type="submit" class="mt-4 btn btn-info">Search</button>
-            </form>
-   
-   </div> 
-     </div>  
-       
-       
-    <!--    <div class="bag">
-            <img src="{{ url('/images/bag.png') }}">    
-        </div> -->
-   
-   
-    @if (count($items) > 0)
-        <div class="row">
-            <div class="col-12">
-                <h2>{{ $keyword }}の検索結果一覧</h2>
+        <div class="form-group">
+            {!! Form::label('text', '金額') !!}
+            <div class="d-flex flex-row">     
+                {!! Form::text('minPrice' ,'', ['class' => 'form-control', 'placeholder' => '100'] ) !!}
+                <p>〜</p>
+                {!! Form::text('maxPrice' ,'', ['class' => 'form-control','placeholder' => '9,999,999'] ) !!}
+                <p>円</p>
             </div>
         </div>
-
+         
+        <div class="form-group">
+            {!! Form::label('sort', '並び順') !!} 
+            {!! Form::select('sort', ['null'=>'指定しない','+itemPrice'=>'価格の安い順','-itemPrice'=>'価格の高い順'],null,['class' => 'form-control'] ) !!}
+        </div>
+         
+        {!! Form::submit('Search', ['class' => 'mt-4 btn btn-info']) !!}
+        {!! Form::close() !!}
+    </div>
+    
+    <div class="bag">
+        <img src="{{ url('/images/bag.png') }}">    
+    </div> 
+</div>  
+       
+    
+    @if (count($items) > 0)
+        <div class="d-flex flex-row">
+            @if($minPrice !== null)
+                <p>「{{ $minPrice }}円」以上</p>
+            @endif
+            
+            @if($maxPrice !== null)
+                <p>「{{ $maxPrice }}円」未満</p>
+             @endif
+        
+            @if($sort === "-itemPrice")
+                <p>「価格の安い順」</p>
+            @endif
+        
+            @if($sort === "+itemPrice")
+                <p>「価格の高い順」</p>
+            @endif
+        </div>    
+        <div class="keyword">
+            <p>{{ $keyword }}の検索結果一覧</p>
+        </div>
+     
+   
         <div class="mt-4 row">     
             @foreach ($items as $item)
                 <div class="mb-5 col-md-3 col-sm-4 col-xs-12">
@@ -64,18 +76,17 @@
                 </div>
             @endforeach  
         </div>    
-                
         {{-- ページネーションのリンク --}}
         <div class="pagination justify-content-center">
             {{ $items->appends($params)->links() }}  
         </div>
-        
-    @else    
+    @else
+        {{-- キーワード空だったら --}}
         @if($keyword === null)
             <p>キーワードを入力してください。</p>
+        {{-- 存在しないキーワードだったら --}}
         @else    
-            <p>{{ $keyword }}　の検索結果はありませんでした。</p>
+            <p>{{ $keyword }}の検索結果はありませんでした。</p>
         @endif
-    
     @endif
 @endsection
