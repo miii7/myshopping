@@ -26,7 +26,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    //protected $redirectTo = RouteServiceProvider::HOME;
 
     /**
      * Create a new controller instance.
@@ -37,4 +37,13 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+    
+    //ログイン後のリダイレクト先をユーザ詳細ページに指定
+    protected function redirectTo() {
+      
+      return route('users.show', ['id' =>\Auth::id()]);
+   }
+    
 }
+
+    

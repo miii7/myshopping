@@ -1,14 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="user-profile">
         <div class="name text-center">
-            <div class="your"><h1><i class="fas fa-heart fa-fw"></i>Your Really Want & Want</h1></div>
-        </div>
-        <div class="icon text-center">
-             <img class="img-circle" src="{{ Gravatar::get($user->email, ['size' => 100]) }}" alt="">
-        </div>
+            <div class="page"><h1>{{ $user->name }}さんのページ</h1></div>
+       </div>
+       
+         
+             {{--<img class="img-circle" src="{{ Gravatar::get($user->email, ['size' => 100]) }}" alt="">--}}
         
+     
         <div class="d-flex justify-content-center">    
             <div class="p-2">Really Want:</div>
                 <h2> {{ $user->really_wants_count }} </h2>
@@ -16,8 +16,8 @@
             <div class="p-2">Want:</div>
                 <h2> {{ $user->nomal_wants_count }} </h2>
         </div>
-    </div>
-    
+ 
+ 
 
  @if (count($reallyWants) > 0)    
     <div class="ichiran"><h3>Really Want一覧</h3></div> 

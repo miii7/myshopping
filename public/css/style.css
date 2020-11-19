@@ -15,6 +15,9 @@ footer {
     letter-spacing:5px;
     font-weight: lighter;
 }
+a:hover{
+  text-decoration: none;
+}
 
 /*表紙*/
 .cover{
@@ -106,14 +109,14 @@ footer {
 
 
 /*ユーザ詳細ページ*/
-.your{
+.page{
     color:gray;
     background-color: #fff4d6;
     padding:3px;
 }
 
 .ichiran{
-    display:inline-block;
+    display: inline-block;
     color:white;
     background-color: #ffb000;
     border-radius: 50%;

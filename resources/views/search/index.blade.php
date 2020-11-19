@@ -1,19 +1,43 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="d-flex flex-row">
-        <div class="mt-4 mb-4 col-6">
+   <div class="d-flex flex-row">
+        <div class="mt-4 mb-4 col-6"> 
+            
             <form method="GET" action="{{ route('search.index') }}">
-                <input type="text" name="keyword" class="form-control" value="{{ $keyword }}"/>
+                <input type="text" name="keyword" required class="form-control" value="{{ $keyword }}"
+                placeholder="キーワード"/>
+       
+           
+        
+        <div class="d-flex flex-row mt-4">     
+       
+            <form method="GET" action="{{ route('search.index') }}">
+                <input type="text" name="minPrice" class="form-control" value="{{ $minPrice }}"　
+                placeholder="min"/>  
+       
+        
+       
+            <p>〜</p>  
+              
+              <form method="GET" action="{{ route('search.index') }}">
+                <input type="text" name="maxPrice" class="form-control" value="{{ $maxPrice }}"
+                placeholder="max"/>  
+        
+          <p>円</p>
+         </div>       
                 <button type="submit" class="mt-4 btn btn-info">Search</button>
             </form>
-        </div>
+   
+   </div> 
+     </div>  
        
-        <div class="bag">
+       
+    <!--    <div class="bag">
             <img src="{{ url('/images/bag.png') }}">    
-        </div>
-   </div>
-    
+        </div> -->
+   
+   
     @if (count($items) > 0)
         <div class="row">
             <div class="col-12">
@@ -46,12 +70,12 @@
             {{ $items->appends($params)->links() }}  
         </div>
         
-    @else
+    @else    
         @if($keyword === null)
             <p>キーワードを入力してください。</p>
-        @else 
+        @else    
             <p>{{ $keyword }}　の検索結果はありませんでした。</p>
         @endif
+    
     @endif
-
 @endsection

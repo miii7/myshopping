@@ -8,7 +8,6 @@
     <div class="row justify-content-around">
       <div class="col-4">
         {!! Form::open(['route' => ['wants.store', $item->code]]) !!}
-          <input type="hidden" name="item_code" value="{{ $item->code }}">
           <input type="hidden" name="item_url" value="{{ $item->item_url }}">
           <input type="hidden" name="item_name" value="{{ $item->item_name }}">
           <input type="hidden" name="image" value="{{ $item->image }}">
