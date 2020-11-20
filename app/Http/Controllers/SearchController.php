@@ -37,7 +37,6 @@ class SearchController extends Controller
    
         $items = array();
       
-      
         // IchibaItemSearch API から、指定条件で検索
         if(!empty($keyword)){ 
             $response = $client->execute('IchibaItemSearch', array(

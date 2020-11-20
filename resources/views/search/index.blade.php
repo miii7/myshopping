@@ -44,11 +44,11 @@
                 <p>「{{ $maxPrice }}円」未満</p>
              @endif
         
-            @if($sort === "-itemPrice")
+            @if($sort === "+itemPrice")
                 <p>「価格の安い順」</p>
             @endif
         
-            @if($sort === "+itemPrice")
+            @if($sort === "-itemPrice")
                 <p>「価格の高い順」</p>
             @endif
         </div>    

@@ -31,6 +31,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('search', 'SearchController@index')->name('search.index'); 
     Route::get('ranking', 'RankingController@index')->name('ranking.index');
     Route::get('users/{id}', 'UsersController@show')->name('users.show');
+    //Route::resource('memos', 'MemosController', ['only' => ['store', 'destroy']]);
 });
     
 //want機能    

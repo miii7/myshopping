@@ -40,6 +40,7 @@ class User extends Authenticatable
 
      public function loadRelationshipCounts()
     {
+        //ReallyWantとWantそれぞれの件数を取得
         $this->loadCount(['reallyWants','nomalWants']);
     }
     
@@ -62,11 +63,11 @@ class User extends Authenticatable
  
     public function want($itemId,$want_kind)
     {
-       // すでにほしい登録しているかの確認
+       // すでにWant登録しているかの確認
         $exist = $this->is_want_id($itemId);
         
         if ($exist) {
-            // すでにほしい登録していれば何もしない
+            // すでにWant登録していれば何もしない
             return false;
         } else {
             // 未登録であればほしい登録する
@@ -77,11 +78,11 @@ class User extends Authenticatable
     
     public function notwant($itemId)
     {
-        // すでにほしい登録しているかの確認
+        // すでにWant登録しているかの確認
         $exist = $this->is_want_id($itemId);
         
         if ($exist) {
-            // すでにほしい登録していればほしいを外す
+            // すでにWant登録していればほしいを外す
             $this->wants()->detach($itemId);
             return true;
         } else {
@@ -97,7 +98,7 @@ class User extends Authenticatable
 
      public function is_want_id($itemId)
     {
-      //  ほしいの中に $itemIdのものが存在するか
+      //  Wantの中に $itemIdのものが存在するか
       return $this->wants()->where('item_id', $itemId)->exists();
     }
 
