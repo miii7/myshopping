@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Item extends Model
 {
     protected $fillable = [
-        'user_id', 'code', 'item_url','item_name','image','price',
+         'code', 'item_url','item_name','image','price',
     ];
 
     public function wantUsers()

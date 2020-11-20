@@ -31,14 +31,15 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('search', 'SearchController@index')->name('search.index'); 
     Route::get('ranking', 'RankingController@index')->name('ranking.index');
     Route::get('users/{id}', 'UsersController@show')->name('users.show');
-    //Route::resource('memos', 'MemosController', ['only' => ['store', 'destroy']]);
 });
     
-//want機能    
+//want機能、memo機能    
     Route::group(['prefix' => 'items/{id}'], function () {
         Route::post('want', 'WantsController@store')->name('wants.store');
         Route::delete('notwantById', 'WantsController@destroyById')->name('wants.destroyById');
         Route::delete('notwantByCode', 'WantsController@destroyByCode')->name('wants.destroyByCode');
+        Route::post('memo', 'WantsController@storeMemo')->name('wants.storeMemo');
+        Route::delete('notMemo', 'WantsController@destroyMemo')->name('wants.destroyMemo');
     });
 
 

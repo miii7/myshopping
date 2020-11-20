@@ -29,12 +29,18 @@
                             <p class="text-center">¥{{ number_format($reallyWant->price) }}</p>
                             {{-- Want／Not  ボタン --}}  
                             <div class="text-center">@include('want.want_button',['item' => $reallyWant])</div>
+                       </div>
+                       <div class="card-footer">
+                            {{-- メモの内容表示 --}}
+                            <div class="memo text-center"><p>{{ $reallyWant->pivot->memo }}</p></div>
+                            {{-- メモ作成フォーム、削除ボタン--}}
+                            @include('memos.form')
                         </div>
                     </div>
                 </div>
             @endforeach  
         </div>  
-    {{-- ページネーションのリンク --}}
+    {{-- ReallyWant一覧ページネーションのリンク --}}
     <div class="pagination justify-content-center">
         {{ $reallyWants->links() }}
     </div>
@@ -58,12 +64,18 @@
                             <p class="text-center">{{ number_format($want->price) }}</p>
                             {{-- Want／Not  ボタン --}}
                             <div class="text-center">@include('want.want_button',['item' => $want])</div>
-                        </div>
+                        </div> 
+                         <div class="card-footer">
+                            {{-- メモの内容表示 --}}
+                            <div class="text-center memo"><p>{{ $want->pivot->memo }}</p></div>
+                            {{-- メモ作成フォーム、削除ボタン--}}
+                            @include('memos.form')
+                        </div>        
                     </div>
                 </div>
             @endforeach  
          </div>  
-    {{-- ページネーションのリンク --}}
+    {{-- Want一覧ページネーションのリンク --}}
     <div class="pagination justify-content-center">
         {{ $wants->links() }}
     </div>

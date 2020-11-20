@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Item;  //追加
+//追加
+use App\Item;  
 
 class WantsController extends Controller
 {
@@ -46,6 +47,36 @@ class WantsController extends Controller
         // 前のURLへリダイレクトさせる
         return back();
     }
+  
+  
+  
+//memo  
+    public function storeMemo(Request $request,$id)
+    {
+       
+        if($request->user()->is_want_id($id)) {
+
+        // 認証済みユーザのメモとして作成
+        $request->user()->wants()->updateExistingPivot( $id,['memo' => $request->memo]);
+        } 
+        // 前のURLへリダイレクトさせる
+        return back();
+
+    }
     
-    
+    public function destroyMemo($id)
+    {
+        if($request->user()->is_want_id($id)) { 
+            
+        // 認証済みユーザのメモを削除（メモの内容をnullに変更）
+         $request->user()->wants()->updateExistingPivot( $id,['memo' => null]);
+        }
+        // 前のURLへリダイレクトさせる
+        return back();
+        
+    }
 }
+
+
+
+    

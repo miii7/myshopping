@@ -46,7 +46,7 @@ class User extends Authenticatable
     
     public function wants()
     {
-        return $this->belongsToMany(Item::class, 'wants', 'user_id', 'item_id')->withTimestamps();
+        return $this->belongsToMany(Item::class, 'wants', 'user_id', 'item_id')->withPivot('memo')->withTimestamps();
     }
     
     
@@ -101,5 +101,7 @@ class User extends Authenticatable
       //  Wantの中に $itemIdのものが存在するか
       return $this->wants()->where('item_id', $itemId)->exists();
     }
+
+
 
 }

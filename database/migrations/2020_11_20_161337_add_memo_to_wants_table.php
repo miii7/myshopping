@@ -14,7 +14,7 @@ class AddMemoToWantsTable extends Migration
     public function up()
     {
         Schema::table('wants', function (Blueprint $table) {
-             $table->string('memo');
+             $table->string('memo')->nullable();
         });
     }
 
