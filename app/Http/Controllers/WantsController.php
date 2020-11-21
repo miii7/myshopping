@@ -53,7 +53,7 @@ class WantsController extends Controller
 //memo  
     public function storeMemo(Request $request,$id)
     {
-       
+       //メモの上限を25文字に指定
        $request->validate([
             'memo' => 'max:25',
         ]);
@@ -79,6 +79,27 @@ class WantsController extends Controller
         return back();
         
     }
+    
+        public function editMemo(Request $request,$id)
+    {
+        //メモの上限を25文字に指定
+        $request->validate([
+            'memo' => 'max:25',
+        ]);
+        
+        if($request->user()->is_want_id($id)) {
+
+        // 認証済みユーザのメモとして作成
+        $request->user()->wants()->updateExistingPivot( $id,['memo' => $request->memo]);
+        } 
+        // 前のURLへリダイレクトさせる
+        return back();
+    }
+    
+    
+    
+    
+    
 }
 
 

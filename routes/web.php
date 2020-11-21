@@ -39,6 +39,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::delete('notwantById', 'WantsController@destroyById')->name('wants.destroyById');
         Route::delete('notwantByCode', 'WantsController@destroyByCode')->name('wants.destroyByCode');
         Route::post('memo', 'WantsController@storeMemo')->name('wants.storeMemo');
+        Route::post('editmemo', 'WantsController@editMemo')->name('wants.editMemo');
         Route::delete('notMemo', 'WantsController@destroyMemo')->name('wants.destroyMemo');
     });
 

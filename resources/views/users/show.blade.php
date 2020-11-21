@@ -32,18 +32,26 @@
                             <div class="text-center">@include('want.want_button',['item' => $reallyWant])</div>
                         </div>
                         <div class="card-footer">
+                            <div class="memo-top"><p>Memo</p></div>    
                             {{-- メモの内容表示 --}}
-                            <div class="mt-2 memo text-center"><p>{{ $reallyWant->pivot->memo }}</p></div>
+                            <div class="memo text-center"><p>{{ $reallyWant->pivot->memo }}</p></div>
                         
                             @if(!empty($reallyWant->pivot->memo)) 
-                                {{-- メモ削除ボタン --}}
-                                <div class="mb-4 text-center">   
+                                    {{-- メモ削除ボタン --}}
+                                <div class="mb-3 text-center">   
                                     {!! Form::open(['route' => ['wants.destroyMemo',$reallyWant->id], 'method' => 'delete']) !!}
                                     {!! Form::submit('メモ削除', ['class' => 'btn btn-info btn-sm']) !!}
                                     {!! Form::close() !!} 
                                 </div>
-                            @else 
-                                {{-- メモ作成フォーム--}}
+                                    {{-- メモ編集ボタン --}}
+                                    {!! Form::open(['route' => ['wants.editMemo',$reallyWant->id]]) !!}
+                                <div class="form-group">
+                                    {!! Form::textarea('memo', old('memo'), ['class' => 'form-control', 'rows' => '1']) !!}
+                                    {!! Form::submit('メモ編集', ['class' => 'btn btn-info btn-block']) !!}
+                                </div>
+                                    {!! Form::close() !!}
+                             @else 
+                                    {{-- メモ作成フォーム--}}
                                     {!! Form::open(['route' => ['wants.storeMemo',$reallyWant->id]]) !!}
                                 <div class="form-group">
                                     {!! Form::textarea('memo', old('memo'), ['class' => 'form-control', 'rows' => '1']) !!}
@@ -84,18 +92,26 @@
                             <div class="text-center">@include('want.want_button',['item' => $want])</div>
                         </div> 
                          <div class="card-footer">
+                            <div class="memo-top"><p>Memo</p></div>  
                             {{-- メモの内容表示 --}}
                             <div class="text-center memo"><p>{{ $want->pivot->memo }}</p></div>
                             
                             @if(!empty($want->pivot->memo)) 
-                                {{-- メモ削除ボタン --}}
-                                <div class="mb-4 text-center">   
+                                    {{-- メモ削除ボタン --}}
+                                <div class="mb-3 text-center">   
                                     {!! Form::open(['route' => ['wants.destroyMemo',$want->id], 'method' => 'delete']) !!}
                                     {!! Form::submit('メモ削除', ['class' => 'btn btn-info btn-sm']) !!}
                                     {!! Form::close() !!} 
                                 </div>
-                            @else 
-                                {{-- メモ作成フォーム--}}
+                                    {{-- メモ編集ボタン --}}
+                                    {!! Form::open(['route' => ['wants.editMemo',$want->id]]) !!}
+                                <div class="form-group">
+                                    {!! Form::textarea('memo', old('memo'), ['class' => 'form-control', 'rows' => '1']) !!}
+                                    {!! Form::submit('メモ編集', ['class' => 'btn btn-info btn-block']) !!}
+                                </div>
+                                    {!! Form::close() !!}
+                             @else 
+                                    {{-- メモ作成フォーム--}}
                                     {!! Form::open(['route' => ['wants.storeMemo',$want->id]]) !!}
                                 <div class="form-group">
                                     {!! Form::textarea('memo', old('memo'), ['class' => 'form-control', 'rows' => '1']) !!}
@@ -103,7 +119,7 @@
                                 </div>
                                     {!! Form::close() !!}
                             @endif
-                        </div>        
+                       </div>        
                     </div>
                 </div>
             @endforeach  
