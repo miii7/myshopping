@@ -54,6 +54,10 @@ class WantsController extends Controller
     public function storeMemo(Request $request,$id)
     {
        
+       $request->validate([
+            'memo' => 'max:25',
+        ]);
+       
         if($request->user()->is_want_id($id)) {
 
         // 認証済みユーザのメモとして作成
@@ -66,10 +70,10 @@ class WantsController extends Controller
     
     public function destroyMemo($id)
     {
-        if($request->user()->is_want_id($id)) { 
+        if(\Auth::user()->is_want_id($id)) { 
             
         // 認証済みユーザのメモを削除（メモの内容をnullに変更）
-         $request->user()->wants()->updateExistingPivot( $id,['memo' => null]);
+         \Auth::user()->wants()->updateExistingPivot( $id,['memo' => null]);
         }
         // 前のURLへリダイレクトさせる
         return back();

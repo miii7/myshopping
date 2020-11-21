@@ -6,8 +6,8 @@
     </div>
     {!! Form::close() !!}
 @else
-    {{-- 投稿削除ボタンのフォーム --}}
-    {!! Form::open(['route' => ['notMemo.destroy',$reallyWant->id], 'method' => 'delete']) !!}
+    {{-- メモ削除ボタンのフォーム --}}
+    {!! Form::open(['route' => ['wants.destroyMemo',$reallyWant->id], 'method' => 'delete']) !!}
     {!! Form::submit('メモ削除', ['class' => 'btn btn-danger btn-sm']) !!}
     {!! Form::close() !!}
 @endif        
@@ -22,7 +22,7 @@
     </div>
     {!! Form::close() !!}
 @else
-    {{-- 投稿削除ボタンのフォーム 
+    {{-- メモ削除ボタンのフォーム 
     {!! Form::open(['route' => ['notMemo.destroy',$want->id], 'method' => 'delete']) !!}
     {!! Form::submit('メモ削除', ['class' => 'btn btn-danger btn-sm']) !!}
     {!! Form::close() !!}

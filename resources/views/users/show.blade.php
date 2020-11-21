@@ -33,8 +33,26 @@
                        <div class="card-footer">
                             {{-- メモの内容表示 --}}
                             <div class="memo text-center"><p>{{ $reallyWant->pivot->memo }}</p></div>
-                            {{-- メモ作成フォーム、削除ボタン--}}
-                            @include('memos.form')
+                        
+                        
+                         <div class="text-center">   
+                            {!! Form::open(['route' => ['wants.destroyMemo',$reallyWant->id], 'method' => 'delete']) !!}
+                            {!! Form::submit('メモ削除', ['class' => 'btn btn-warning btn-sm']) !!}
+                            {!! Form::close() !!} 
+                         </div>
+                        
+                           
+                           @if($reallyWant->pivot->memo　=== null)
+                            {{-- メモ作成フォーム--}}
+                            {!! Form::open(['route' => ['wants.storeMemo',$reallyWant->id]]) !!}
+                            <div class="mt-4 form-group">
+                             {!! Form::textarea('memo', old('memo'), ['class' => 'form-control', 'rows' => '1']) !!}
+                             {!! Form::submit('メモ入力', ['class' => 'btn btn-info btn-block']) !!}
+                              </div>
+                             {!! Form::close() !!}
+                            @endif
+                            
+                            {{--  @include('memos.form') --}}
                         </div>
                     </div>
                 </div>
@@ -68,8 +86,24 @@
                          <div class="card-footer">
                             {{-- メモの内容表示 --}}
                             <div class="text-center memo"><p>{{ $want->pivot->memo }}</p></div>
+                            
+                            <div class="text-center">   
+                            {!! Form::open(['route' => ['wants.destroyMemo',$want->id], 'method' => 'delete']) !!}
+                            {!! Form::submit('メモ削除', ['class' => 'btn btn-warning btn-sm']) !!}
+                            {!! Form::close() !!} 
+                            </div>
+                            
+                            {{-- メモ作成フォーム--}}
+                            {!! Form::open(['route' => ['wants.storeMemo',$want->id]]) !!}
+                            <div class="mt-4 form-group">
+                             {!! Form::textarea('memo', old('memo'), ['class' => 'form-control', 'rows' => '1']) !!}
+                             {!! Form::submit('メモ入力', ['class' => 'btn btn-info btn-block']) !!}
+                              </div>
+                             {!! Form::close() !!}
+                            
+                            
                             {{-- メモ作成フォーム、削除ボタン--}}
-                            @include('memos.form')
+                           {{-- @include('memos.form')--}}
                         </div>        
                     </div>
                 </div>
