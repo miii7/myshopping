@@ -16,7 +16,7 @@ class WantsController extends Controller
         $item = Item::firstOrCreate([
                     //第1引数は検索条件のカラム名をキーとした連想配列
                     'code' => $code ],
-                     //第2引数の連想配列は、データが取得できなかった場合にDBに保存する際に使用される    
+                     //第2引数の連想配列は、データが取得できなかった場合にDBに保存する際に使用    
                     ['item_url' => $request->item_url,
                     'item_name' => $request->item_name,
                     'image'=> $request->image,
