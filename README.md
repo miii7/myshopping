@@ -3,8 +3,8 @@
 
 ## アプリケーションリンク
 * https://myshopping2020.herokuapp.com
-　* ログイン用メールアドレス：php2020＠mail.com
-　* パスワード：myshopping
+　 * ログイン用メールアドレス：php2020＠mail.com
+　 * パスワード：myshopping
 
 ## デモ画像、動画
 * [サイトマップ](https://cacoo.com/diagrams/KkaqCAROABgLRVVR/042A3)
