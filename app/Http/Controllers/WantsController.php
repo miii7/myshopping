@@ -21,7 +21,7 @@ class WantsController extends Controller
                     'item_name' => $request->item_name,
                     'image'=> $request->image,
                     'price'=> $request->price,
-            　  ]);
+                ]);
         
         //認証済みユーザが、itemのidとWantの種類を判定してwantする
         \Auth::user()->want($item->id,$request->want_kind);
