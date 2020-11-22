@@ -23,10 +23,10 @@ class SearchController extends Controller
         //リクエストから検索キーワードを取り出す
         $keyword = $request->input('keyword');
         
-        //最低金額100円に設定
+        //下限価格を100円に設定
         $minPrice = max($request->input('minPrice'), 100);
         
-        //最高金額が空か、文字列か、あるいは9,999,999円以上なら、強制的に上限金額に変換する。
+        //上限価格が空か、文字列か、あるいは9,999,999円より大きいなら、強制的に上限価格に変換する。
         $maxPrice = $request->input('maxPrice');
         if(empty($maxPrice) || !is_numeric($maxPrice) || $maxPrice > 9999999){
             $maxPrice = 9999999;
@@ -63,16 +63,22 @@ class SearchController extends Controller
                         );
                 }
                 
+                //itemsという配列のページャーを実装
                 $items = new LengthAwarePaginator(
                     $items,
+                    //表示が28*100ページより多いなら28*100ページ、それより少ないならレスポンス数を表示
                     $response['count'] >= 28*100 ? 28*100 : $response['count'] ,
+                    //itemsという配列を1ページ当たり28ずつ表示する
                     28,
+                    //現在のページ番号
                     $request->page,
+                    //ページの遷移先パス
                     ['path' => '/search']
                 );
             }
         }
-      
+        
+        //ページネーションに引き継がせるパラメータを配列でセット
         $params = [ 
             'keyword' => $keyword,
             'page'  => $request->page,

@@ -76,7 +76,7 @@
                 </div>
             @endforeach  
         </div>    
-        {{-- ページネーションのリンク --}}
+        {{-- ページネーションのリンク（appendsにarrayで追加したいパラメータを渡す） --}}
         <div class="pagination justify-content-center">
             {{ $items->appends($params)->links() }}  
         </div>

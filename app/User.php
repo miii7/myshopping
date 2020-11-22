@@ -98,7 +98,7 @@ class User extends Authenticatable
 
      public function is_want_id($itemId)
     {
-      //  Wantの中に $itemIdのものが存在するか
+      // wantsのitem_idカラムの中に $itemIdのものが存在するか
       return $this->wants()->where('item_id', $itemId)->exists();
     }
 
