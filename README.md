@@ -10,8 +10,8 @@
 * [サイトマップ](https://cacoo.com/diagrams/KkaqCAROABgLRVVR/042A3)
 * [ワイヤーフレーム](https://cacoo.com/diagrams/xIggmeWwZ1eLm3Pe/E3594)
 * [データベース図](https://cacoo.com/diagrams/isWyhOJurRLbQEVe/35F68)
-</br>
-[![myshopping](https://img.youtube.com/vi/yXIx2v9bgJE/0.jpg)](https://www.youtube.com/watch?v=yXIx2v9bgJE)
+* ![image](docs/myshopping.png)
+* [操作動画](https://www.youtube.com/watch?v=yXIx2v9bgJE&feature=youtu.be)
 
 ## 機能一覧
 * 商品検索機能
