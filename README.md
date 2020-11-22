@@ -10,8 +10,8 @@
 * [サイトマップ](https://cacoo.com/diagrams/KkaqCAROABgLRVVR/042A3)
 * [ワイヤーフレーム](https://cacoo.com/diagrams/xIggmeWwZ1eLm3Pe/E3594)
 * [データベース図](https://cacoo.com/diagrams/isWyhOJurRLbQEVe/35F68)
-* 操作画面
-  [![myshopping](https://img.youtube.com/vi/yXIx2v9bgJE/0.jpg)](https://www.youtube.com/watch?v=yXIx2v9bgJE)
+</br>
+[![myshopping](https://img.youtube.com/vi/yXIx2v9bgJE/0.jpg)](https://www.youtube.com/watch?v=yXIx2v9bgJE)
 
 ## 機能一覧
 * 商品検索機能
@@ -38,19 +38,21 @@ https://webservice.rakuten.co.jp/api/ichibaitemsearch/#aboutSdk
 
 ## 苦労した点
 * ランキング表示をするため、商品にReally Wantしている人の人数をカウントするのが難しかった。
-```     $items = Item::withCount('reallyWantUsers')->having('really_want_users_count', '>', 0)
-            ->orderBy('really_want_users_count', 'desc')
-            ->take(10)
-            ->get();
+```php
+$items = Item::withCount('reallyWantUsers')->having('really_want_users_count', '>', 0)
+->orderBy('really_want_users_count', 'desc')
+->take(10)
+->get();
 ```
 
 * また、上記の箇所について、開発環境と本番環境で使用しているデータベースが異なり、withCountにより作成されるreally_want_users_countカラムをhavingの箇所で指定できないという問題が生じたため、最終的には下記のように修正した。
-```    {   $query = Item::withCount('reallyWantUsers');
-        $items = Item::fromSub($query, 'alias')
-            ->where('really_want_users_count', '>', 0)
-            ->orderBy('really_want_users_count', 'desc')
-            ->take(10)
-            ->get();
+```php       
+$query = Item::withCount('reallyWantUsers');
+$items = Item::fromSub($query, 'alias')
+->where('really_want_users_count', '>', 0)
+->orderBy('really_want_users_count', 'desc')
+->take(10)
+->get();
 ```
 
 ## ユーザ目線で意識した点
