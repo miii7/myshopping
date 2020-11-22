@@ -6,11 +6,13 @@
 　* ログイン用メールアドレス：php2020＠mail.com
 　* パスワード：myshopping
 
-## 画像、動画
+## デモ画像、動画
 * [サイトマップ](https://cacoo.com/diagrams/KkaqCAROABgLRVVR/042A3)
 * [ワイヤーフレーム](https://cacoo.com/diagrams/xIggmeWwZ1eLm3Pe/E3594)
 * [データベース図](https://cacoo.com/diagrams/isWyhOJurRLbQEVe/35F68)
-* ![操作画面](docs/myshopping.png)(https://www.youtube.com/watch?v=yXIx2v9bgJE&feature=youtu.be)
+* 操作画面
+[![操作画面](https://img.youtube.com/vi/yXIx2v9bgJE/0.jpg)](https://www.youtube.com/watch?v=yXIx2v9bgJE)
+
 
 ## 機能一覧
 * 商品検索機能
