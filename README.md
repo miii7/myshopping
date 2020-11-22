@@ -5,7 +5,7 @@
 * [サイトマップ](https://cacoo.com/diagrams/KkaqCAROABgLRVVR/042A3)
 * [ワイヤーフレーム](https://cacoo.com/diagrams/xIggmeWwZ1eLm3Pe/E3594)
 * [データベース図](https://cacoo.com/diagrams/isWyhOJurRLbQEVe/35F68)
-* [操作画面]（https://www.youtube.com/watch?v=EYNzyvPbnM0&feature=youtu.be）
+* ![操作画面](docs/movie.jpeg)（https://www.youtube.com/watch?v=EYNzyvPbnM0&feature=youtu.be）
 
 ## 機能一覧
 * 商品検索機能
@@ -27,10 +27,10 @@
 * 保存したかどうかの表示を、楽天APIからの検索時にも反映するために、楽天コードでも判定するようにした。
 
 ## 苦労した点
-* ランキング表示をするため、商品にReally Wantしている人の人数をカウントするのが難しかった。そのソースコードを共有します。また、開発環境と本番環境でデータベースが異なり、withCountにより作成されるreally_want_users_countカラムをhavingの箇所で指定できないという問題があったため、上記に変更したという経緯もあります。元々のソースコードを共有します。
+* ランキング表示をするため、商品にReally Wantしている人の人数をカウントするのが難しかった。
 ``` $items = Item::withCount('reallyWantUsers')->having('really_want_users_count', '>', 0)->orderBy('really_want_users_count', 'desc')->take(10)->get();
 ```
-* また、上記の箇所について、開発環境と本番環境でデータベースが異なり、withCountにより作成されるreally_want_users_countカラムをhavingの箇所で指定できないという問題が生じたため、最終的には下記のように書き換えました。そのソースコードを共有します。
+* また、上記の箇所について、開発環境と本番環境でデータベースが異なり、例外的にwithCountにより作成されるreally_want_users_countカラムをhavingの箇所で指定できないという問題が生じたため、最終的には下記のように修正した。
 ```    {   $query = Item::withCount('reallyWantUsers');
         $items = Item::fromSub($query, 'alias')
             ->where('really_want_users_count', '>', 0)
